@@ -1,3 +1,3 @@
-Project detail: https://www.theodinproject.com/lessons/javascript-webpack
+Project detail: https://www.theodinproject.com/lessons/node-path-javascript-restaurant-page
 
 Live preview: 
