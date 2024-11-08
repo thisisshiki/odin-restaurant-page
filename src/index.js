@@ -12,7 +12,6 @@ loadHome();
 const homeBtn = document.querySelector('button:nth-child(1)');
 const menuBtn = document.querySelector('button:nth-child(2)');
 const aboutBtn = document.querySelector('button:nth-child(3)');
-const registerBtn = document.getElementById('register-btn');
 
 // Add event listeners
 homeBtn.addEventListener('click', loadHome);

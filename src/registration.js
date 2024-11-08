@@ -5,31 +5,35 @@ export function setupRegistration() {
     const content = document.getElementById('content');
 
     const registrationForm = `
-        <div id="registration-container" style="max-width: 400px; margin: 0 auto; padding: 20px;">
+        <div id="registration-container">
             <h2>User Registration</h2>
             <form id="register-form" novalidate>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label for="email" style="display: block; margin-bottom: 5px;">Email</label>
-                    <input type="email" id="email" required 
-                        style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                    <span class="error-message" style="color: red; font-size: 12px;"></span>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                    <span class="error-message"></span>
                 </div>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label for="password" style="display: block; margin-bottom: 5px;">Password</label>
-                    <input type="password" id="password" required
-                        style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                    <span class="error-message" style="color: red; font-size: 12px;"></span>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" id="country" required>
+                    <span class="error-message"></span>
                 </div>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label for="confirm-password" style="display: block; margin-bottom: 5px;">Confirm Password</label>
-                    <input type="password" id="confirm-password" required
-                        style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                    <span class="error-message" style="color: red; font-size: 12px;"></span>
+                <div class="form-group">
+                    <label for="zipcode">Zip Code</label>
+                    <input type="text" id="zipcode" required>
+                    <span class="error-message"></span>
                 </div>
-                <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; 
-                    color: white; border: none; border-radius: 4px; cursor: pointer;">
-                    Register
-                </button>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                    <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" required>
+                    <span class="error-message"></span>
+                </div>
+                <button type="submit">Register</button>
             </form>
         </div>
     `;
@@ -42,11 +46,15 @@ export function setupRegistration() {
     function setupFormValidation() {
         const form = document.getElementById('register-form');
         const email = document.getElementById('email');
+        const country = document.getElementById('country');
+        const zipcode = document.getElementById('zipcode');
         const password = document.getElementById('password');
         const confirmPassword = document.getElementById('confirm-password');
 
         // Add input validation listeners
         email.addEventListener('blur', () => validateField(email, isValidEmail));
+        country.addEventListener('blur', () => validateField(country, isValidCountry));
+        zipcode.addEventListener('blur', () => validateField(zipcode, isValidZipcode));
         password.addEventListener('blur', () => validateField(password, isValidPassword));
         confirmPassword.addEventListener('blur', () => validateField(confirmPassword, isValidConfirmPassword));
 
@@ -55,10 +63,12 @@ export function setupRegistration() {
             
             // Validate all fields
             const isEmailValid = validateField(email, isValidEmail);
+            const isCountryValid = validateField(country, isValidCountry);
+            const isZipcodeValid = validateField(zipcode, isValidZipcode);
             const isPasswordValid = validateField(password, isValidPassword);
             const isConfirmValid = validateField(confirmPassword, isValidConfirmPassword);
 
-            if (isEmailValid && isPasswordValid && isConfirmValid) {
+            if (isEmailValid && isCountryValid && isZipcodeValid && isPasswordValid && isConfirmValid) {
                 alert('Registration successful!');
                 // Clear form and redirect to home after short delay
                 setTimeout(() => {
@@ -94,6 +104,27 @@ export function setupRegistration() {
         }
         if (!emailRegex.test(email)) {
             return { valid: false, message: 'Please enter a valid email address' };
+        }
+        return { valid: true, message: '' };
+    }
+
+    function isValidCountry(country) {
+        if (!country) {
+            return { valid: false, message: 'Country is required' };
+        }
+        if (country.length < 2) {
+            return { valid: false, message: 'Country must be at least 2 characters' };
+        }
+        return { valid: true, message: '' };
+    }
+
+    function isValidZipcode(zipcode) {
+        const zipcodeRegex = /^\d{5}(-\d{4})?$/;
+        if (!zipcode) {
+            return { valid: false, message: 'Zip Code is required' };
+        }
+        if (!zipcodeRegex.test(zipcode)) {
+            return { valid: false, message: 'Please enter a valid zip code (e.g., 12345 or 12345-6789)' };
         }
         return { valid: true, message: '' };
     }

@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Roboto", sans-serif;
   line-height: 1.6;
   background-color: #f5f5f5;
 }
@@ -53,14 +53,12 @@ button:hover {
 h1 {
   font-size: 2.5rem;
   color: #333;
-  margin-bottom: 1.5rem;
   text-align: center;
 }
 
 h2 {
   font-size: 1.8rem;
   color: #444;
-  margin: 1rem 0;
 }
 
 p {
@@ -71,8 +69,6 @@ p {
 /* Images */
 img {
   display: block;
-  margin: 2rem auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Menu items */
@@ -110,19 +106,6 @@ img {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-  nav {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-}
-
 /* Carousel */
 .carousel-container {
   position: relative;
@@ -130,7 +113,8 @@ img {
   margin: auto;
   overflow: hidden;
   border-radius: 8px;
-  height: 400px; /* 根据需要调整 */
+  height: 400px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
 }
 
 .carousel {
@@ -149,7 +133,7 @@ img {
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 确保图片覆盖整个容器 */
+  object-fit: cover;
   border-radius: 8px;
 }
 
@@ -163,30 +147,30 @@ img {
   padding: 0.5rem;
   cursor: pointer;
   user-select: none;
-  z-index: 10; /* 确保箭头在最前面 */
+  z-index: 10;
 }
 
 .arrow.prev {
-  left: 10px; /* 根据需要调整 */
+  left: 10px;
 }
 
 .arrow.next {
-  right: 10px; /* 根据需要调整 */
+  right: 10px;
 }
 
 .dots {
   position: absolute;
-  bottom: 10px; /* 将导航点定位到轮播图的底部 */
+  bottom: 10px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10; /* 确保导航点在最前面 */
+  z-index: 10;
 }
 
 .dot {
   display: inline-block;
-  width: 12px; /* 增大点的大小，便于查看 */
+  width: 12px;
   height: 12px;
   margin: 0 5px;
   background-color: #bbb;
@@ -225,7 +209,49 @@ img {
 button {
   padding: 10px 20px;
   color: white;
+  background-color: #333;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+/* Registration form */
+#registration-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 }
